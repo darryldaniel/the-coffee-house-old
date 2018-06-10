@@ -1,0 +1,37 @@
+{
+  "name": "the-coffee-house",
+  "version": "0.0.1",
+  "description": "A hypothetical coffee shop business",
+  "main": "app.js",
+  "author": "Darryl Daniel",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "nodemon"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "."
+    ],
+    "ext": "ts",
+    "exec": "ts-node app.ts"
+  },
+  "dependencies": {
+    "koa": "^2.5.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "koa-static": "^4.0.3",
+    "koa-views": "^6.1.4",
+    "nodemon": "^1.17.5",
+    "ts-node": "^6.1.0",
+    "typescript": "^2.9.1"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.0.46",
+    "@types/koa-bodyparser": "^4.2.0",
+    "@types/koa-router": "^7.0.28",
+    "@types/koa-static": "^4.0.0",
+    "@types/koa-views": "^2.0.3",
+    "@types/node": "^10.3.2"
+  }
+}
