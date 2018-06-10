@@ -6,11 +6,19 @@ import { createAndConfigureApp } from './appConfig';
 import { createAndConfigureRouter } from './routerConfig';
 
 const PORT = process.env.PORT || 3000;
-const app: Koa = createAndConfigureApp();
 
-createAndConfigureRouter(app);
+const startApp = async () => {
+  const app: Koa = await createAndConfigureApp();
 
-app.listen(PORT);
+  createAndConfigureRouter(app);
+  
+  app.listen(PORT);
+  
+  console.log(`Server started...`);
 
-console.log(`Server started...`);
-console.log(`Browse to http://localhost:${PORT}`);
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`Browse to http://localhost:${PORT}`);
+  }
+}
+
+startApp();
