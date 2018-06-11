@@ -9,8 +9,8 @@ const schema = mergeSchemas({
 });
 
 export const addApiToRouter = (router: Router) => {
-  router.post("/graphql", graphqlKoa({ schema: schema }));
-  router.get("/graphql", graphqlKoa({ schema: schema }));
+  router.post("/api", graphqlKoa({ schema: schema }));
+  router.get("/api", graphqlKoa({ schema: schema }));
 
   if (process.env.NODE_ENV === "development") {
     router.get("/graphiql", graphiqlKoa({ endpointURL: "graphql" }));

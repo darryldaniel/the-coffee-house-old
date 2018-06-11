@@ -10,7 +10,7 @@ import VueApollo from "vue-apollo";
 Vue.config.productionTip = false;
 
 const httpLink = new HttpLink({
-  uri: 'http://localhost:3000/graphql'
+  uri: `${window.location.origin}/api`
 });
 
 const apolloClient = new ApolloClient({
