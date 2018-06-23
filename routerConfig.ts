@@ -11,30 +11,17 @@ export const createAndConfigureRouter = (app: Koa) => {
     await ctx.render('index.html');
   });
 
-  router.get('/api', ctx => {
-    ctx.body = {
-      data: 'hello'
-    };
+  router.post('/login', (ctx, next) => {
+    passport.authenticate('local', (error, user, info, status) => {
+      if (user) {
+        ctx.body = { success: true, info };
+        return ctx.login(user);
+      } else {
+        ctx.body = { success: false, info };
+        ctx.throw(401);
+      }
+    })(ctx, next);
   });
-
-  router.post('/login', ctx => {
-    ctx.body = {
-      data: 'logged in'
-    };
-  });
-
-  // router.post('/login', async ctx => {
-  //   passport.authenticate('local', (error, user, info, status) => {
-  //     console.log(`user: ${user}`);
-  //     if (user) {
-  //       ctx.login(user);
-  //       ctx.redirect('/#/');
-  //     } else {
-  //       ctx.status = 400;
-  //       ctx.body = { status: 'Error' };
-  //     }
-  //   })(ctx, ctx.res);
-  // });
 
   addApiToRouter(router);
 

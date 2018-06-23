@@ -1,9 +1,9 @@
 import * as passport from 'koa-passport';
-import { BasicStrategy } from 'passport-http';
+import { Strategy as LocalStrategy } from 'passport-local';
 
 export const setupAuthentication = () => {
   passport.use(
-    new BasicStrategy(
+    new LocalStrategy(
       (username: string, password: string, callback: Function) => {
         const validUser = users.filter(
           (user: User) => user.username === username

@@ -32,7 +32,6 @@
     "koa-views": "^6.1.4",
     "koa-webpack": "^5.0.2",
     "nodemon": "^1.17.5",
-    "passport-http": "^0.3.0",
     "passport-local": "^1.0.0",
     "ts-node": "^6.1.0",
     "typescript": "^2.9.1"
@@ -48,7 +47,6 @@
     "@types/koa-views": "^2.0.3",
     "@types/koa-webpack": "^5.0.1",
     "@types/node": "^10.3.2",
-    "@types/passport-http": "^0.3.6",
     "@types/passport-local": "^1.0.33",
     "apollo-cache-inmemory": "^1.2.2",
     "apollo-client": "^2.3.2",

@@ -163,13 +163,6 @@
   version "9.6.21"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.21.tgz#4563c26a53531c5aca943065fcdf2dd562f63cd4"
 
-"@types/passport-http@^0.3.6":
-  version "0.3.6"
-  resolved "https://registry.yarnpkg.com/@types/passport-http/-/passport-http-0.3.6.tgz#2873616dfc3fed6fe266bfe2f1c88be9b2c23876"
-  dependencies:
-    "@types/express" "*"
-    "@types/passport" "*"
-
 "@types/passport-local@^1.0.33":
   version "1.0.33"
   resolved "https://registry.yarnpkg.com/@types/passport-local/-/passport-local-1.0.33.tgz#d245b60c5b801cb3aeca1ffab557d5fe1534260d"
@@ -3346,12 +3339,6 @@ parseurl@^1.3.0:
 pascalcase@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/pascalcase/-/pascalcase-0.1.1.tgz#b363e55e8006ca6fe21784d2db22bd15d7917f14"
-
-passport-http@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/passport-http/-/passport-http-0.3.0.tgz#8ee53d4380be9c60df2151925029826f77115603"
-  dependencies:
-    passport-strategy "1.x.x"
 
 passport-local@^1.0.0:
   version "1.0.0"

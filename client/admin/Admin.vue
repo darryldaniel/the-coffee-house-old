@@ -10,7 +10,7 @@
       <input v-model="password" type="text" id="password"/>
     </div>
   </form>
-  <button @click="login(username, password)">LOG IN</button>
+  <button @click="login(username, password, result)">LOG IN</button>
   </div>
 </template>
 
@@ -25,9 +25,9 @@ export default {
     };
   },
   methods: {
-    login: async (username, password) => {
-      const response = await axios.post('/login', { username, password });
-      console.log(response);
+    login: async (username, password, result) => {
+      const { data } = await axios.post('/login', { username, password });
+      console.log(data);
     }
   }
 };
