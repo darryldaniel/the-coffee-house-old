@@ -12,6 +12,12 @@
   version "2.0.49"
   resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.49.tgz#92e33d13f74c895cb9a7f38ba97db8431ed14bc0"
 
+"@types/axios@^0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@types/axios/-/axios-0.14.0.tgz#ec2300fbe7d7dddd7eb9d3abf87999964cafce46"
+  dependencies:
+    axios "*"
+
 "@types/body-parser@*":
   version "1.17.0"
   resolved "https://registry.yarnpkg.com/@types/body-parser/-/body-parser-1.17.0.tgz#9f5c9d9bd04bb54be32d5eb9fc0d8c974e6cf58c"
@@ -76,6 +82,13 @@
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/@types/koa-compose/-/koa-compose-3.2.2.tgz#dc106e000bbf92a3ac900f756df47344887ee847"
 
+"@types/koa-passport@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@types/koa-passport/-/koa-passport-4.0.1.tgz#63fcf1631fa570c1fa0ccb42bfe9a9ffbd2d7aed"
+  dependencies:
+    "@types/koa" "*"
+    "@types/passport" "*"
+
 "@types/koa-router@^7.0.28":
   version "7.0.28"
   resolved "https://registry.yarnpkg.com/@types/koa-router/-/koa-router-7.0.28.tgz#67487c862a831099aed8864a8996bfa7e989edc0"
@@ -85,6 +98,12 @@
 "@types/koa-send@*":
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/@types/koa-send/-/koa-send-4.1.1.tgz#88f57cbe0343c8204903f9096d8ff6b98ec3296f"
+  dependencies:
+    "@types/koa" "*"
+
+"@types/koa-session@^5.7.4":
+  version "5.7.4"
+  resolved "https://registry.yarnpkg.com/@types/koa-session/-/koa-session-5.7.4.tgz#39716bc04a76ae343e8772730dc871cb7cdebadf"
   dependencies:
     "@types/koa" "*"
 
@@ -143,6 +162,34 @@
 "@types/node@^9.4.6":
   version "9.6.21"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.21.tgz#4563c26a53531c5aca943065fcdf2dd562f63cd4"
+
+"@types/passport-http@^0.3.6":
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/@types/passport-http/-/passport-http-0.3.6.tgz#2873616dfc3fed6fe266bfe2f1c88be9b2c23876"
+  dependencies:
+    "@types/express" "*"
+    "@types/passport" "*"
+
+"@types/passport-local@^1.0.33":
+  version "1.0.33"
+  resolved "https://registry.yarnpkg.com/@types/passport-local/-/passport-local-1.0.33.tgz#d245b60c5b801cb3aeca1ffab557d5fe1534260d"
+  dependencies:
+    "@types/express" "*"
+    "@types/passport" "*"
+    "@types/passport-strategy" "*"
+
+"@types/passport-strategy@*":
+  version "0.2.33"
+  resolved "https://registry.yarnpkg.com/@types/passport-strategy/-/passport-strategy-0.2.33.tgz#a523c6526262f96d9e4063d9285721551d87889b"
+  dependencies:
+    "@types/express" "*"
+    "@types/passport" "*"
+
+"@types/passport@*":
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/@types/passport/-/passport-0.4.5.tgz#a6dd5bd2f96f2f15d350a688c3f59aa16d101c7a"
+  dependencies:
+    "@types/express" "*"
 
 "@types/range-parser@*":
   version "1.2.2"
@@ -615,6 +662,13 @@ autoprefixer@^6.3.1:
     num2fraction "^1.2.2"
     postcss "^5.2.16"
     postcss-value-parser "^3.2.3"
+
+axios@*, axios@^0.18.0:
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"
+  dependencies:
+    follow-redirects "^1.3.0"
+    is-buffer "^1.1.5"
 
 babel-code-frame@^6.26.0:
   version "6.26.0"
@@ -1142,9 +1196,13 @@ core-js@^2.5.3:
   version "2.5.7"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.7.tgz#f972608ff0cead68b841a16a932d0b183791814e"
 
-core-util-is@~1.0.0:
+core-util-is@^1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
+
+crc@^3.4.4:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/crc/-/crc-3.5.0.tgz#98b8ba7d489665ba3979f59b21381374101a1964"
 
 create-ecdh@^4.0.0:
   version "4.0.3"
@@ -1767,6 +1825,12 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.1"
     readable-stream "^2.0.4"
 
+follow-redirects@^1.3.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.5.0.tgz#234f49cf770b7f35b40e790f636ceba0c3a0ab77"
+  dependencies:
+    debug "^3.1.0"
+
 for-in@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
@@ -2230,6 +2294,10 @@ is-ci@^1.0.10:
   dependencies:
     ci-info "^1.0.0"
 
+is-class@~0.0.4:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/is-class/-/is-class-0.0.5.tgz#220a8465d24f9a142082d06c7c56edb39052416d"
+
 is-data-descriptor@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/is-data-descriptor/-/is-data-descriptor-0.1.4.tgz#0b5ee648388e2c860282e793f1856fec3f301b56"
@@ -2381,6 +2449,14 @@ is-symbol@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/is-symbol/-/is-symbol-1.0.1.tgz#3cc59f00025194b6ab2e38dbae6689256b660572"
 
+is-type-of@^1.0.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/is-type-of/-/is-type-of-1.2.0.tgz#b553cbb4621adf5b4171e8883f370e7a6ec38995"
+  dependencies:
+    core-util-is "^1.0.2"
+    is-class "~0.0.4"
+    isstream "~0.1.2"
+
 is-whitespace@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/is-whitespace/-/is-whitespace-0.3.0.tgz#1639ecb1be036aec69a54cbb401cfbed7114ab7f"
@@ -2410,6 +2486,10 @@ isobject@^2.0.0:
 isobject@^3.0.0, isobject@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
+
+isstream@~0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
 iterall@^1.1.3, iterall@^1.2.1:
   version "1.2.2"
@@ -2517,6 +2597,12 @@ koa-is-json@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/koa-is-json/-/koa-is-json-1.0.0.tgz#273c07edcdcb8df6a2c1ab7d59ee76491451ec14"
 
+koa-passport@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/koa-passport/-/koa-passport-4.1.0.tgz#afa756c40f8bb95a3617635d2ce1e5e43814ebac"
+  dependencies:
+    passport "^0.4.0"
+
 koa-router@^7.4.0:
   version "7.4.0"
   resolved "https://registry.yarnpkg.com/koa-router/-/koa-router-7.4.0.tgz#aee1f7adc02d5cb31d7d67465c9eacc825e8c5e0"
@@ -2536,6 +2622,16 @@ koa-send@^4.0.0, koa-send@^4.1.3:
     http-errors "^1.6.1"
     mz "^2.6.0"
     resolve-path "^1.4.0"
+
+koa-session@^5.8.1:
+  version "5.8.1"
+  resolved "https://registry.yarnpkg.com/koa-session/-/koa-session-5.8.1.tgz#f57b558a20e4da713cc2f96bfa67946bb4110548"
+  dependencies:
+    crc "^3.4.4"
+    debug "^2.2.0"
+    is-type-of "^1.0.0"
+    pedding "^1.1.0"
+    uid-safe "^2.1.3"
 
 koa-static@^4.0.3:
   version "4.0.3"
@@ -3251,6 +3347,29 @@ pascalcase@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/pascalcase/-/pascalcase-0.1.1.tgz#b363e55e8006ca6fe21784d2db22bd15d7917f14"
 
+passport-http@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/passport-http/-/passport-http-0.3.0.tgz#8ee53d4380be9c60df2151925029826f77115603"
+  dependencies:
+    passport-strategy "1.x.x"
+
+passport-local@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/passport-local/-/passport-local-1.0.0.tgz#1fe63268c92e75606626437e3b906662c15ba6ee"
+  dependencies:
+    passport-strategy "1.x.x"
+
+passport-strategy@1.x.x:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/passport-strategy/-/passport-strategy-1.0.0.tgz#b5539aa8fc225a3d1ad179476ddf236b440f52e4"
+
+passport@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/passport/-/passport-0.4.0.tgz#c5095691347bd5ad3b5e180238c3914d16f05811"
+  dependencies:
+    passport-strategy "1.x.x"
+    pause "0.0.1"
+
 path-browserify@0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/path-browserify/-/path-browserify-0.0.0.tgz#a0b870729aae214005b7d5032ec2cbbb0fb4451a"
@@ -3287,6 +3406,10 @@ pause-stream@0.0.11:
   dependencies:
     through "~2.3"
 
+pause@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/pause/-/pause-0.0.1.tgz#1d408b3fdb76923b9543d96fb4c9dfd535d9cb5d"
+
 pbkdf2@^3.0.3:
   version "3.0.16"
   resolved "https://registry.yarnpkg.com/pbkdf2/-/pbkdf2-3.0.16.tgz#7404208ec6b01b62d85bf83853a8064f8d9c2a5c"
@@ -3296,6 +3419,10 @@ pbkdf2@^3.0.3:
     ripemd160 "^2.0.1"
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
+
+pedding@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/pedding/-/pedding-1.1.0.tgz#f7b138c288d4bd584eada1215f5bd924f1e1e667"
 
 pify@^3.0.0:
   version "3.0.0"
@@ -3682,6 +3809,10 @@ querystring-es3@^0.2.0:
 querystring@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
+
+random-bytes@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/random-bytes/-/random-bytes-1.0.0.tgz#4f68a1dc0ae58bd3fb95848c30324db75d64360b"
 
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5:
   version "2.0.6"
@@ -4389,6 +4520,12 @@ uglifyjs-webpack-plugin@^1.2.4:
     uglify-es "^3.3.4"
     webpack-sources "^1.1.0"
     worker-farm "^1.5.2"
+
+uid-safe@^2.1.3:
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/uid-safe/-/uid-safe-2.1.5.tgz#2b3d5c7240e8fc2e58f8aa269e5ee49c0857bd3a"
+  dependencies:
+    random-bytes "~1.0.0"
 
 undefsafe@^2.0.2:
   version "2.0.2"

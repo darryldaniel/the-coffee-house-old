@@ -1,53 +1,24 @@
 <template>
   <div id="app">
-    <h1 class="main-heading">{{ heading }}</h1>
-    <h2 class="main-sub-heading">{{ subHeading }}</h2>
-    <div 
-      class="product"
-      v-for="product in products"
-      :key="product.id"
-    >
-      <div class="product-name">{{ product.name }}</div>
-      <div class="product-price">R{{ product.price / 100 }}</div>
-    </div>
+    <h1 class="main-heading">The Coffee House</h1>
+    
     <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
-    </div>
-    <router-view/> -->
-    <footer>
+    </div> -->
+    <router-view/>
+    <footer class="app__footer">
       <p class="message">Made with &hearts; and <span class="vue-highlight">Vue</span>. Hosted on <span class="zeit-highlight">ZEIT</span>.</p>
     </footer>
   </div>
 </template>
 
 <script>
-import gql from "graphql-tag";
-
-export default {
-  data: () => ({
-    heading: "The Coffee House",
-    subHeading: "Products",
-    products: []
-  }),
-  apollo: {
-    products: gql`
-      {
-        products {
-          id
-          name
-          price
-        }
-      }
-    `
-  }
-};
 </script>
-
 
 <style>
 #app {
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -66,16 +37,12 @@ a.router-link-exact-active {
 }
 
 .main-heading {
-  font-family: "Alegreya SC", "Times New Roman", Times, serif;
+  font-family: 'Alegreya SC', 'Times New Roman', Times, serif;
   font-size: 3rem;
 }
 
-.main-sub-heading {
-  font-family: "Lato", Tahoma, Verdana, sans-serif;
-}
-
 p {
-  font-family: "Lato", Tahoma, Verdana, sans-serif;
+  font-family: 'Lato', Tahoma, Verdana, sans-serif;
 }
 
 .vue-highlight {
@@ -87,11 +54,12 @@ p {
   font-weight: bold;
 }
 
-.product {
-  padding: 5px 0;
-}
-
-footer {
+.app__footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
   margin-top: 2rem;
+  position: absolute;
+  bottom: 0;
 }
 </style>
