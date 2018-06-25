@@ -1,4 +1,4 @@
-import { makeExecutableSchema } from "graphql-tools";
+import { makeExecutableSchema } from 'graphql-tools';
 
 const typeDefs = `
 type Product {
@@ -24,13 +24,13 @@ const resolvers = {
 const dummyProducts = [
   {
     id: 1,
-    name: "Equador Single Origin",
+    name: 'Equador Single Origin',
     price: 8900,
     quantityInStock: 7
   },
   {
     id: 2,
-    name: "Mixed Origin",
+    name: 'Mixed Origin',
     price: 6900,
     quantityInStock: 9
   }

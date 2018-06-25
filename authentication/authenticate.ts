@@ -10,14 +10,20 @@ export const setupAuthentication = () => {
         )[0];
 
         if (!validUser) {
-          return callback(null, false, { message: `User doesn't exist` });
+          return callback(null, false, {
+            success: false,
+            message: `User doesn't exist`
+          });
         }
 
         if (validUser.password !== password) {
-          return callback(null, false, { message: `Password invalid` });
+          return callback(null, false, {
+            success: false,
+            message: `Password invalid`
+          });
         }
 
-        return callback(null, validUser);
+        return callback(null, validUser, { success: true });
       }
     )
   );
@@ -27,12 +33,14 @@ const users: Array<User> = [
   {
     id: 1,
     username: 'darryl',
-    password: 'test'
+    password: 'test',
+    roles: ['admin']
   },
   {
     id: 2,
     username: 'candice',
-    password: 'test'
+    password: 'test',
+    roles: ['customer']
   }
 ];
 
@@ -40,4 +48,5 @@ interface User {
   id: number;
   username: string;
   password: string;
+  roles: Array<string>;
 }
