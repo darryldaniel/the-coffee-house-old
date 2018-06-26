@@ -1,21 +1,22 @@
 <template>
   <div>
     <form action="/login" method="post">
-    <div>
-      <label for="username" class="admin__username">Username:</label>
-      <input v-model="username" type="text" id="usename"/>
-    </div>
-    <div>
-      <label for="password" class="admin__password">Password:</label>
-      <input v-model="password" type="text" id="password"/>
-    </div>
-  </form>
-  <button @click="login(username, password, result)">LOG IN</button>
+      <div class="admin__username">
+        <label for="username" class="admin__username-label">Username:</label>
+        <input class="admin__input" v-model="username" type="text" id="username"/>
+      </div>
+      <div class="admin__password">
+        <label for="password" class="admin__password-label">Password:</label>
+        <input class="admin__input" v-model="password" type="text" id="password"/>
+      </div>
+    </form>
+    <button class="admin__login-button" @click="login(username, password)">LOG IN</button>
+    <div>{{ result }}</div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import { mapGetters, mapState } from 'vuex';
 
 export default {
   data: function() {
@@ -24,14 +25,44 @@ export default {
       password: ''
     };
   },
+  created: function () {
+    this.$store.commit('setLoginFailedStatus', '');
+  },
+  computed: {
+    ...mapGetters({
+      result: 'loginFailedStatus'
+    })
+  },
   methods: {
-    login: async (username, password, result) => {
-      const { data } = await axios.post('/login', { username, password });
-      console.log(data);
+    login (username, password) {
+      const payload = {
+        username,
+        password,
+        router: this.$router
+      };
+
+      this.$store.dispatch('login', payload);
     }
   }
 };
 </script>
 
 <style scoped>
+.admin__username {
+  margin-bottom: 1rem;
+}
+
+.admin__password {
+  margin-bottom: 2rem;
+}
+
+.admin__input {
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
+}
+
+.admin__login-button {
+  margin-bottom: 2rem;
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
+  padding: .25rem 1.5rem;
+}
 </style>

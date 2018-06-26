@@ -5,7 +5,7 @@ import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import VueApollo from 'vue-apollo';
 import { router } from './router';
-// import store from './store'
+import store from './store/login';
 
 Vue.config.productionTip = false;
 
@@ -27,7 +27,7 @@ const apolloProvider = new VueApollo({
 
 new Vue({
   router,
-  // store,
+  store,
   provide: apolloProvider.provide(),
   render: h => h(App)
 }).$mount('#app');

@@ -9,6 +9,7 @@
   "scripts": {
     "start": "ts-node app.ts",
     "dev": "SET \"NODE_ENV=development\" && nodemon",
+    "debug": "SET \"NODE_ENV=development\" && nodemon --inspect",
     "build": "webpack --config=webpack.prod.js",
     "now-build": "NODE_ENV=production webpack --config=webpack.prod.js"
   },
