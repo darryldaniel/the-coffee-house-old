@@ -18,7 +18,7 @@ export const createAndConfigureRouter = (app: Koa) => {
         ctx.body = info;
 
         if (user) {
-          ctx.login(user);
+          return ctx.login(user);
         } else {
           ctx.throw(401);
         }

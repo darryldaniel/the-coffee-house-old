@@ -1,6 +1,14 @@
 import * as passport from 'koa-passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 
+passport.serializeUser((user: User, callback) => {
+  callback(null, user.id);
+});
+
+passport.deserializeUser((user: User, callback) => {
+  callback(null, user);
+});
+
 export const setupAuthentication = () => {
   passport.use(
     new LocalStrategy(
