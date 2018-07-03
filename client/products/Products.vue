@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="products__heading">{{ heading }}</h2>
+    <h1 class="title">{{ heading }}</h1>
     <div 
       class="product"
       v-for="product in products"
@@ -33,11 +33,7 @@ export default {
 };
 </script>
 
-<style scoped>
-.products__heading {
-  font-family: 'Lato', Tahoma, Verdana, sans-serif;
-}
-
+<style lang="scss" scoped>
 .product {
   padding: 5px 0;
 }
