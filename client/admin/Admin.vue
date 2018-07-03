@@ -1,17 +1,23 @@
 <template>
-  <div>
-    <form action="/login" method="post">
-      <div class="admin__username">
-        <label for="username" class="admin__username-label">Username:</label>
-        <input class="admin__input" v-model="username" type="text" id="username"/>
+  <div class="container admin__form">
+    <div class="field">
+      <label for="username" class="label">Username</label>
+      <div class="control">
+        <input v-model="username" type="text" id="username" class="input" placeholder="Username">
       </div>
-      <div class="admin__password">
-        <label for="password" class="admin__password-label">Password:</label>
-        <input class="admin__input" v-model="password" type="text" id="password"/>
+    </div>
+    <div class="field">
+      <label for="password" class="label">Password</label>
+      <div class="control">
+        <input v-model="password" type="text" id="password" class="input" placeholder="Password">
       </div>
-    </form>
-    <button class="admin__login-button" @click="login(username, password)">LOG IN</button>
-    <div>{{ result }}</div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <button class="button" @click="login(username, password)">LOG IN</button>
+      </div>
+    </div>
+    <p class="help is-danger">{{ result }}</p>
   </div>
 </template>
 
@@ -48,21 +54,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.admin__username {
-  margin-bottom: 1rem;
-}
-
-.admin__password {
-  margin-bottom: 2rem;
-}
-
-.admin__input {
-  font-family: 'Lato', Helvetica, Arial, sans-serif;
-}
-
-.admin__login-button {
-  margin-bottom: 2rem;
-  font-family: 'Lato', Helvetica, Arial, sans-serif;
-  padding: .25rem 1.5rem;
+.admin {
+  &__form {
+    padding: 1rem;
+    text-align: left;
+    max-width: 400px;
+  }
 }
 </style>
