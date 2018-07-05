@@ -1,12 +1,24 @@
 <template>
   <div id="app">
-    <h1 class="main-heading">The Coffee House</h1>
-    
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
-    <router-view/>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <p class="navbar-item title logo">The Coffee House</p>
+      </div>
+      <div class="navbar-burger burger" data-target="navMenu" aria-label="menu" aria-expanded="false" @click="toggleMenu()" v-bind:class="{ 'is-active': isActive }">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </div>
+      <div class="navbar-menu" id="navMenu" v-bind:class="{ 'is-active': isActive }">
+        <div class="navbar-end">
+          <router-link class="navbar-item" to="/">Home</router-link>
+          <router-link class="navbar-item" to="/admin">Admin</router-link>
+        </div>
+      </div>
+    </nav>
+    <div class="container main-content">
+      <router-view/>
+    </div>
     <footer class="app__footer">
       <p class="message">Made with &hearts; and <span class="vue-highlight">Vue</span>. Hosted on <span class="zeit-highlight">ZEIT</span>.</p>
     </footer>
@@ -14,34 +26,29 @@
 </template>
 
 <script>
+export default {
+  data: function () {
+    return {
+      isActive: false
+    };
+  },
+  methods: {
+    toggleMenu() {
+      this.isActive = !this.isActive;
+    }
+  }
+}
 </script>
 
 <style lang="scss">
 @import "main.scss";
 
-#app {
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
+.logo {
+  font-family: $logo-font;
 }
 
-a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-a.router-link-exact-active {
-  color: #42b983;
-}
-
-.main-heading {
-  font-family: 'Alegreya SC', 'Times New Roman', Times, serif;
-  font-size: 3rem;
-}
-
-p {
-  font-family: 'Lato', Tahoma, Verdana, sans-serif;
+.main-content {
+  padding-top: 3rem;
 }
 
 .vue-highlight {

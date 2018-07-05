@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="title">{{ heading }}</h1>
+    <h1 class="title products__title">{{ heading }}</h1>
     <div class="tile is-ancestor">
       <div class="tile products__container is-parent">
         <div 
@@ -52,6 +52,10 @@ export default {
 
 <style lang="scss" scoped>
 .products {
+  &__title {
+    text-align: center;
+  }
+
   &__container {
     justify-content: center;
   }
