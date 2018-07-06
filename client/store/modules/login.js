@@ -1,7 +1,4 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-
-import { login } from '../api/login';
+import { login } from '../../api/login';
 
 const state = {
   loggedIn: false,
@@ -26,6 +23,9 @@ const actions = {
     } else {
       commit('setLoginFailedStatus', result.message);
     }
+  },
+  resetLoginFailedStatus: ({ commit }) => {
+    commit('setLoginFailedStatus', '');
   }
 }
 
@@ -41,11 +41,10 @@ const mutations = {
   }
 }
 
-Vue.use(Vuex);
-
-export default new Vuex.Store({
+export default {
+  namespaced: true,
   state,
   getters,
   actions,
   mutations
-});
+};

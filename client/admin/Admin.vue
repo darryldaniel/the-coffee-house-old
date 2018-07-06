@@ -32,11 +32,11 @@ export default {
     };
   },
   created: function () {
-    this.$store.commit('setLoginFailedStatus', '');
+    this.$store.dispatch('login/resetLoginFailedStatus');
   },
   computed: {
     ...mapGetters({
-      result: 'loginFailedStatus'
+      result: 'login/loginFailedStatus'
     })
   },
   methods: {
@@ -47,7 +47,7 @@ export default {
         router: this.$router
       };
 
-      this.$store.dispatch('login', payload);
+      this.$store.dispatch('login/login', payload);
     }
   }
 };

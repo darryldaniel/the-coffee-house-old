@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="title products__title">{{ heading }}</h1>
+    <h1 class="title products__title">Products</h1>
     <div class="tile is-ancestor">
       <div class="tile products__container is-parent">
         <div 
@@ -30,22 +30,14 @@
 </template>
 
 <script>
-import gql from 'graphql-tag';
+import { mapState, mapActions } from 'vuex';
+
 export default {
-  data: () => ({
-    heading: 'Products',
-    products: []
+  computed: mapState({
+    products: state => state.products.all
   }),
-  apollo: {
-    products: gql`
-      {
-        products {
-          id
-          name
-          price
-        }
-      }
-    `
+  created () {
+    this.$store.dispatch('products/getAllProducts')
   }
 };
 </script>
