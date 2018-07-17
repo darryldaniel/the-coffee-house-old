@@ -8,8 +8,23 @@ type Product {
   quantityInStock: Int!
 }
 
+input NewProduct {
+  name: String!
+  price: Int!
+  quantityInStock: Int!
+}
+
+type AddProductResult {
+  success: Boolean!
+  message: String
+}
+
 type Query {
   products: [Product]
+}
+
+type Mutation {
+  addProduct(newProduct: NewProduct): AddProductResult
 }
 `;
 
@@ -17,6 +32,19 @@ const resolvers = {
   Query: {
     products: () => {
       return dummyProducts;
+    }
+  },
+  Mutation: {
+    addProduct: (_: any, { newProduct }: any, state: any) => {
+      const newIndex = dummyProducts.length + 1;
+      newProduct.id = newIndex;
+
+      dummyProducts.push(newProduct);
+
+      return {
+        success: true,
+        message: ''
+      };
     }
   }
 };
