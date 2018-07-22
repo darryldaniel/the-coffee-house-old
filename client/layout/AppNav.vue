@@ -17,6 +17,7 @@
         <div class="navbar-menu" id="navMenu" v-bind:class="{ 'is-active': isActive }">
           <router-link class="navbar-item" to="/">Home</router-link>
           <router-link class="navbar-item" to="/admin">Admin</router-link>
+          <router-link class="navbar-item" to="/addProduct">Add Product</router-link>
       </div>
       </div>
     </nav>
@@ -24,7 +25,7 @@
 
 <script>
 export default {
-  data: function () {
+  data: function() {
     return {
       isActive: false
     };
@@ -34,7 +35,7 @@ export default {
       this.isActive = !this.isActive;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

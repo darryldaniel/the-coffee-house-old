@@ -17,6 +17,25 @@ const getAllProducts = async () => {
   return response;
 };
 
+const addProduct = async ({ name, price, quantityInStock }) => {
+  const response = await client.mutate({
+    mutation: gql`
+      mutation {
+        addProduct(newProduct: { 
+          name: "${name}", 
+          price: ${price * 100},
+          quantityInStock: ${quantityInStock}}) {
+          message
+          success
+        }
+      }
+    `
+  });
+
+  return response
+}
+
 export {
-  getAllProducts
+  getAllProducts,
+  addProduct
 }

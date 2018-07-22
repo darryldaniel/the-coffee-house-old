@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 
 import Products from './products/Products.vue';
 import Admin from './admin/Admin.vue';
+import AddProduct from './products/AddProduct.vue';
 
 const routes = [
   {
@@ -14,6 +15,11 @@ const routes = [
     path: '/admin',
     name: 'Admin',
     component: Admin
+  },
+  {
+    path: '/addProduct',
+    name: 'AddProduct',
+    component: AddProduct
   }
 ];
 
