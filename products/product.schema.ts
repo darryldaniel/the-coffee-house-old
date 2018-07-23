@@ -39,11 +39,18 @@ const resolvers = {
       const newIndex = dummyProducts.length + 1;
       newProduct.id = newIndex;
 
+      if (!newProduct.name || !newProduct.price || !newProduct.quantityInStock) {
+        return {
+          success: false,
+          message: 'Product not added!'
+        };  
+      }
+
       dummyProducts.push(newProduct);
 
       return {
         success: true,
-        message: ''
+        message: 'Product added successfully!'
       };
     }
   }

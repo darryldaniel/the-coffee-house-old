@@ -8,6 +8,15 @@ const state = {
   }
 };
 
+const getters = {
+  addProductResultMessage(state) {
+    return state.addProductResult.message;
+  },
+  addProductResult(state) {
+    return state.addProductResult.success;
+  }
+}
+
 const actions = {
   getAllProducts: async ({ commit }) => {
     const { data } = await getAllProducts();
@@ -15,7 +24,7 @@ const actions = {
   },
   addProduct: async ({ commit }, payload) => {
     const { data } = await addProduct(payload);
-    commit('setAddProductResult', data.addProduct)
+    commit('setAddProductResult', data.addProduct);
   }
 };
 
@@ -31,6 +40,7 @@ const mutations = {
 export default {
   namespaced: true,
   state,
+  getters,
   actions,
   mutations
 }

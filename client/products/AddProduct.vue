@@ -21,14 +21,16 @@
     <div class="field">
       <div class="control">
         <button class="button" @click="addProduct(name, price, quantityInStock)">ADD</button>
+        <router-link class="button" to="/">BACK TO HOME</router-link>
       </div>
     </div>
-    <!-- <p class="help is-danger">{{ result }}</p> -->
+    <p class="help is-success" v-bind:class="result ? 'is-success' : 'is-danger'">{{ message }}</p>
   </div>
 </template>
 
-
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   data: function() {
     return {
@@ -36,6 +38,12 @@ export default {
       price: 0,
       quantityInStock: 0
     };
+  },
+  computed: {
+    ...mapGetters({
+      message: 'products/addProductResultMessage',
+      result: 'products/addProductResult'
+    })
   },
   methods: {
     addProduct(name, price, quantityInStock) {

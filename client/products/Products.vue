@@ -50,6 +50,7 @@ export default {
 
   &__container {
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   &__product {
