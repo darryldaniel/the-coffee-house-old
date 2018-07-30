@@ -2,23 +2,27 @@ import { login } from '../../api/login';
 
 const state = {
   loggedIn: false,
-  loginFailedStatus: ''
+  loginFailedStatus: '',
+  isAdmin: false
 }
 
 const getters = {
-  loggedIn (state) { 
+  loggedIn(state) {
     return state.loggedIn;
   },
-  loginFailedStatus (state) {
+  loginFailedStatus(state) {
     return state.loginFailedStatus;
+  },
+  isAdmin(state) {
+    return state.isAdmin;
   }
 }
 
 const actions = {
-  login:  async ({ commit }, payload) => {
+  login: async ({ commit }, payload) => {
     const result = await login(payload.username, payload.password);
     if (result.success) {
-      commit('loginUser');
+      commit('loginUser', result.roles);
       payload.router.push('/');
     } else {
       commit('setLoginFailedStatus', result.message);
@@ -30,13 +34,14 @@ const actions = {
 }
 
 const mutations = {
-  loginUser (state) {
+  loginUser(state, userRoles) {
     state.loggedIn = true;
+    state.isAdmin = userRoles.includes('admin');
   },
-  logoutUser (state) {
+  logoutUser(state) {
     state.loggedIn = false;
   },
-  setLoginFailedStatus (state, status) {
+  setLoginFailedStatus(state, status) {
     state.loginFailedStatus = status;
   }
 }

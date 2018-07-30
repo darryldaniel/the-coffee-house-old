@@ -31,7 +31,7 @@ export const setupAuthentication = () => {
           });
         }
 
-        return callback(null, validUser, { success: true });
+        return callback(null, validUser, { success: true, roles: validUser.roles });
       }
     )
   );
