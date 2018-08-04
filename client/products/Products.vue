@@ -6,7 +6,7 @@
         <div 
           class="tile products__product is-child"
           v-for="product in products"
-          :key="product.id"
+          :key="product.productId"
         >
           <div class="card">
             <div class="card-header">
@@ -16,7 +16,7 @@
               Product Description
             </div>
             <div class="card-footer">
-              <div class="card-footer-item">R{{ product.price / 100 }}</div>
+              <div class="card-footer-item">R{{ product.price }}</div>
               <div class="card-footer-item">
                 <button class="button is-flat">Add to cart</button>
               </div>
@@ -36,8 +36,8 @@ export default {
   computed: mapState({
     products: state => state.products.all
   }),
-  created () {
-    this.$store.dispatch('products/getAllProducts')
+  created() {
+    this.$store.dispatch('products/getAllProducts');
   }
 };
 </script>
