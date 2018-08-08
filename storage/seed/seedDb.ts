@@ -1,4 +1,5 @@
 import { MongoClient, Db, Collection } from 'mongodb';
+import { NewProduct } from '../../products/newProduct.interface';
 
 require('now-env');
 
@@ -24,27 +25,26 @@ const seedDb = async (host: string, port: string, username: string, password: st
 
   products = client.db('the-coffee-house').collection('products');
 
-  result = await addProductToCollection(products, PRODUCTS_SEED[0]);
-  result = await addProductToCollection(products, PRODUCTS_SEED[1]);
-  result = await addProductToCollection(products, PRODUCTS_SEED[2]);
+  await addProductToCollection(products, PRODUCTS_SEED[0]);
+  await addProductToCollection(products, PRODUCTS_SEED[1]);
+  await addProductToCollection(products, PRODUCTS_SEED[2]);
 
   process.exit(0);
 }
 
-async function addProductToCollection(collection: Collection, product: any): Promise<{}> {
+async function addProductToCollection(collection: Collection, product: NewProduct): Promise<NewProduct> {
   const result = await collection.findOne({ name: product.name });
-  let insertResult;
 
   if (!result) {
-    insertResult = await collection.insertOne(product);
+    await collection.insertOne(product);
     console.log(`SEED-DB: Added ${product.name}`);
   } else {
     console.log(`SEED-DB: ${product.name} already exists`);
   }
-  return result;
+  return result || product;
 }
 
-const PRODUCTS_SEED = [
+const PRODUCTS_SEED: Array<NewProduct> = [
   {
     name: 'Tanzania Gombe',
     price: 13500,

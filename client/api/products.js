@@ -6,7 +6,7 @@ const getAllProducts = async () => {
     query: gql`
       {
         products {
-          productId
+          _id
           name
           price
         }
@@ -23,7 +23,7 @@ const addProduct = async ({ name, price, quantityInStock }) => {
       mutation {
         addProduct(newProduct: { 
           name: "${name}", 
-          price: ${price},
+          price: ${price * 100},
           quantityInStock: ${quantityInStock}}) {
           message
           success
@@ -35,7 +35,7 @@ const addProduct = async ({ name, price, quantityInStock }) => {
         query: gql`
           {
             products {
-              productId
+              _id
               name
               price
             }

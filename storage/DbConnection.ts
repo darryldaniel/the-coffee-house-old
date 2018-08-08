@@ -1,5 +1,7 @@
 import { MongoClient, Db, Collection, InsertOneWriteOpResult } from 'mongodb';
 
+import { NewProduct } from '../products/newProduct.interface';
+
 require('now-env');
 
 class DbConnection {
@@ -16,12 +18,9 @@ class DbConnection {
     return this._db.collection('products');
   }
 
-  public async insertProduct(product: any): Promise<InsertOneWriteOpResult> {
-    const count = await this.getProductsCollection().estimatedDocumentCount();
-
-    product.productId = count + 1;
-
-    return this.getProductsCollection().insertOne(product);
+  public async insertProduct(product: NewProduct): Promise<InsertOneWriteOpResult> {
+    const insertResult = await this.getProductsCollection().insertOne(product);
+    return insertResult;
   }
 
   private async _connectToDb(url: string, dbName: string): Promise<Db> {
