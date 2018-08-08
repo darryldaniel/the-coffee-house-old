@@ -1,8 +1,8 @@
 {
   "env": {
-    "DB_HOST": "localhost",
-    "DB_PORT": "27017",
-    "DB_USERNAME": "",
-    "DB_PASSWORD": ""
+    "DB_HOST": "@secret-db-host",
+    "DB_PORT": "@secret-db-port",
+    "DB_USERNAME": "@secret-db-username",
+    "DB_PASSWORD": "@secret-db-password"
   }
 }
