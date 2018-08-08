@@ -8,10 +8,16 @@ class DbConnection {
   private _db: Db;
 
   constructor() {
-    const url = `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}`,
-      dbName = 'the-coffee-house';
+    const dbName = 'the-coffee-house';
+    let uri: string;
 
-    this._connectToDb(url, dbName).then(db => (this._db = db));
+    if (process.env.DB_USERNAME && process.env.DB_PASSWORD) {
+      uri = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/the-coffee-house`;
+    } else {
+      uri = `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/`;
+    }
+
+    this._connectToDb(uri, dbName).then(db => (this._db = db));
   }
 
   public getProductsCollection(): Collection {
@@ -23,8 +29,8 @@ class DbConnection {
     return insertResult;
   }
 
-  private async _connectToDb(url: string, dbName: string): Promise<Db> {
-    const client = await MongoClient.connect(url);
+  private async _connectToDb(uri: string, dbName: string): Promise<Db> {
+    const client = await MongoClient.connect(uri, { useNewUrlParser: true });
     return client.db(dbName);
   }
 }

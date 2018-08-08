@@ -10,7 +10,7 @@ const seedDb = async (host: string, port: string, username: string, password: st
     result: any;
 
   if (username && password) {
-    uri = `mongodb://${username}:${password}@${host}:${port}/`;
+    uri = `mongodb://${username}:${password}@${host}:${port}/the-coffee-house`;
   } else {
     uri = `mongodb://${host}:${port}/`;
   }
