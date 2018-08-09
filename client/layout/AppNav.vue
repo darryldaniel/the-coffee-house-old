@@ -16,8 +16,9 @@
       <div class="navbar-end">
         <div class="navbar-menu" id="navMenu" v-bind:class="{ 'is-active': menuIsActive }">
           <router-link class="navbar-item" to="/">Home</router-link>
-          <router-link class="navbar-item" to="/admin">Admin</router-link>
           <router-link class="navbar-item" to="/addProduct" v-if="isAdmin">Add Product</router-link>
+          <router-link class="navbar-item" to="/admin" v-if="!loggedIn">Log In</router-link>
+          <router-link v-else class="navbar-item" to="/">Log Out</router-link>
       </div>
       </div>
     </nav>
@@ -34,7 +35,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      isAdmin: 'login/isAdmin'
+      isAdmin: 'login/isAdmin',
+      loggedIn: 'login/loggedIn'
     })
   },
   methods: {
