@@ -8,5 +8,12 @@ If you've unwittingly stumbled across this repository and are wondering what thi
 - Koa
 - Vue
 - GraphQL
+- MongoDB
+
+### Database Added!
+This project now makes use of a mongodb database. To connect to a database, add the details to **now-secrets.json**. I've added a script to seed the db which can be run to populate the database that the application needs to run. You can run this script with the command:
+```
+yarn seed-db
+```
 
 #### Hosted on ZEIT
