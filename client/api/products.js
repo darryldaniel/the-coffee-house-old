@@ -4,14 +4,14 @@ import gql from 'graphql-tag';
 const getAllProducts = async () => {
   const response = await client.query({
     query: gql`
-        {
-          products {
-            id
-            name
-            price
-          }
+      {
+        products {
+          _id
+          name
+          price
         }
-      `
+      }
+    `
   });
 
   return response;
@@ -29,13 +29,23 @@ const addProduct = async ({ name, price, quantityInStock }) => {
           success
         }
       }
-    `
+    `,
+    refetchQueries: [
+      {
+        query: gql`
+          {
+            products {
+              _id
+              name
+              price
+            }
+          }
+        `
+      }
+    ]
   });
 
-  return response
-}
+  return response;
+};
 
-export {
-  getAllProducts,
-  addProduct
-}
+export { getAllProducts, addProduct };

@@ -1,8 +1,9 @@
 import { makeExecutableSchema } from 'graphql-tools';
+import { dbInstance } from '../storage/DbConnection';
 
 const typeDefs = `
 type Product {
-  id: Int!
+  _id: String!
   name: String!
   price: Int!
   quantityInStock: Int!
@@ -30,45 +31,42 @@ type Mutation {
 
 const resolvers = {
   Query: {
-    products: () => {
-      return dummyProducts;
+    products: async () => {
+      const products = await dbInstance
+        .getProductsCollection()
+        .find()
+        .toArray();
+      return products;
     }
   },
   Mutation: {
-    addProduct: (_: any, { newProduct }: any, state: any) => {
-      const newIndex = dummyProducts.length + 1;
-      newProduct.id = newIndex;
-
-      if (!newProduct.name || !newProduct.price || !newProduct.quantityInStock) {
+    addProduct: async (_: any, { newProduct }: any, state: any) => {
+      if (
+        !newProduct.name ||
+        !newProduct.price ||
+        !newProduct.quantityInStock
+      ) {
         return {
           success: false,
           message: 'Product not added!'
-        };  
+        };
       }
 
-      dummyProducts.push(newProduct);
+      const response = await dbInstance.insertProduct(newProduct);
 
-      return {
-        success: true,
-        message: 'Product added successfully!'
-      };
+      if (response.result.ok && response.result.ok > 0) {
+        return {
+          success: true,
+          message: 'Product added successfully!'
+        };
+      } else {
+        return {
+          success: false,
+          message: 'There was a problem adding the product'
+        };
+      }
     }
   }
 };
-
-const dummyProducts = [
-  {
-    id: 1,
-    name: 'Equador Single Origin',
-    price: 8900,
-    quantityInStock: 7
-  },
-  {
-    id: 2,
-    name: 'Mixed Origin',
-    price: 6900,
-    quantityInStock: 9
-  }
-];
 
 export const productSchema = makeExecutableSchema({ typeDefs, resolvers });

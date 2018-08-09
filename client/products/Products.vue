@@ -6,7 +6,7 @@
         <div 
           class="tile products__product is-child"
           v-for="product in products"
-          :key="product.id"
+          :key="product._id"
         >
           <div class="card">
             <div class="card-header">
@@ -36,8 +36,8 @@ export default {
   computed: mapState({
     products: state => state.products.all
   }),
-  created () {
-    this.$store.dispatch('products/getAllProducts')
+  created() {
+    this.$store.dispatch('products/getAllProducts');
   }
 };
 </script>

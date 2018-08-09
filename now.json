@@ -1,0 +1,8 @@
+{
+  "env": {
+    "DB_HOST": "@secret-db-host",
+    "DB_PORT": "@secret-db-port",
+    "DB_USERNAME": "@secret-db-username",
+    "DB_PASSWORD": "@secret-db-password"
+  }
+}
