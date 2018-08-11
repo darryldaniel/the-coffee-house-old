@@ -11,21 +11,19 @@ export const createAndConfigureRouter = (app: Koa) => {
     await ctx.render('index.html');
   });
 
-  router.post('/login', (ctx, next) => {
+  router.post('/login', async (ctx, next) => {
     const authenticateUser = passport.authenticate(
       'local',
       (error, user, info, status) => {
         ctx.body = info;
 
         if (user) {
-          return ctx.login(user);
-        } else {
-          ctx.throw(401);
+          ctx.login(user);
         }
       }
     );
 
-    authenticateUser(ctx, next);
+    return authenticateUser(ctx, next);
   });
 
   addApiToRouter(router);

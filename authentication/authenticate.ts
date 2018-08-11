@@ -1,21 +1,21 @@
 import * as passport from 'koa-passport';
 import { Strategy as LocalStrategy } from 'passport-local';
+import { dbInstance } from '../storage/DbConnection';
+import { User } from './user.interface';
 
 passport.serializeUser((user: User, callback) => {
-  callback(null, user.id);
+  callback(null, user._id);
 });
 
-passport.deserializeUser((user: User, callback) => {
-  callback(null, user);
+passport.deserializeUser((id: string, callback) => {
+  dbInstance.getUsersCollection().findOne({ _id: id }, callback);
 });
 
 export const setupAuthentication = () => {
   passport.use(
     new LocalStrategy(
-      (username: string, password: string, callback: Function) => {
-        const validUser = users.filter(
-          (user: User) => user.username === username
-        )[0];
+      async (username: string, password: string, callback: Function) => {
+        const validUser: User = await dbInstance.getUsersCollection().findOne({ username: username });
 
         if (!validUser) {
           return callback(null, false, {
@@ -30,8 +30,29 @@ export const setupAuthentication = () => {
             message: `Password invalid`
           });
         }
-
         return callback(null, validUser, { success: true, roles: validUser.roles });
+
+        dbInstance.getUsersCollection().findOne({ username: username }, (error, validUser: User) => {
+          console.log(`USER:`);
+          console.dir(validUser);
+          if (error) {
+            console.log(error);
+            return callback(null, false, {
+              success: false,
+              message: `User doesn't exist`
+            });
+          }
+
+          if (validUser.password !== password) {
+            return callback(null, false, {
+              success: false,
+              message: `Password invalid`
+            });
+          }
+
+          console.log('calling return callback...')
+          return callback(null, validUser, { success: true, roles: validUser.roles });
+        });
       }
     )
   );
@@ -39,22 +60,19 @@ export const setupAuthentication = () => {
 
 const users: Array<User> = [
   {
-    id: 1,
+    _id: '1',
     username: 'darryl',
     password: 'test',
+    firstName: 'Darryl',
+    surname: 'Daniel',
     roles: ['admin']
   },
   {
-    id: 2,
+    _id: '2',
     username: 'candice',
     password: 'test',
+    firstName: 'Candice',
+    surname: 'Daniel',
     roles: ['customer']
   }
 ];
-
-interface User {
-  id: number;
-  username: string;
-  password: string;
-  roles: Array<string>;
-}

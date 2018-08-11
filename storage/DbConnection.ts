@@ -20,6 +20,10 @@ class DbConnection {
     this._connectToDb(uri, dbName).then(db => (this._db = db));
   }
 
+  public getUsersCollection(): Collection {
+    return this._db.collection('users');
+  }
+
   public getProductsCollection(): Collection {
     return this._db.collection('products');
   }
