@@ -1,9 +1,3 @@
-@import "~bulma/sass/utilities/initial-variables";
-
-$family-serif: 'Lato', Helvetica, Arial, sans-serif;
-
-$family-primary: $family-serif;
-
-$footer-background-color: #ffffff;
-
+@import "~bulmaswatch/minty/_variables.scss";
 @import "~bulma/bulma";
+@import "~bulmaswatch/minty/_overrides.scss";
