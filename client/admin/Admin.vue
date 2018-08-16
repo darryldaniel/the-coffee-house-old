@@ -1,23 +1,33 @@
 <template>
+
   <div class="container admin__form">
-    <div class="field">
-      <label for="username" class="label">Username</label>
-      <div class="control">
-        <input v-model="username" type="text" id="username" class="input" placeholder="Username">
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <div class="column is-4 is-offset-4">
+            <h3 class="title has-text-grey">Login</h3>
+            <div class="box">
+              <form>
+                <div class="field">
+                  <div class="control">
+                    <input v-model="username" class="input" type="username" placeholder="Your Username" autofocus="">
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="control">
+                    <input v-model="password" class="input" type="password" placeholder="Your Password">
+                  </div>
+                </div>
+                <div class="field">
+                  <p class="help is-danger">{{ result }}</p>
+                </div>
+                <button class="button is-block is-info is-medium is-fullwidth" @click="login(username, password)" >Login</button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label for="password" class="label">Password</label>
-      <div class="control">
-        <input v-model="password" type="text" id="password" class="input" placeholder="Password">
-      </div>
-    </div>
-    <div class="field">
-      <div class="control">
-        <button class="button" @click="login(username, password)">LOG IN</button>
-      </div>
-    </div>
-    <p class="help is-danger">{{ result }}</p>
+    </section>
   </div>
 </template>
 
@@ -31,7 +41,7 @@ export default {
       password: ''
     };
   },
-  created: function () {
+  created: function() {
     this.$store.dispatch('login/resetLoginFailedStatus');
   },
   computed: {
@@ -40,7 +50,7 @@ export default {
     })
   },
   methods: {
-    login (username, password) {
+    login(username, password) {
       const payload = {
         username,
         password,
@@ -52,13 +62,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-.admin {
-  &__form {
-    padding: 1rem;
-    text-align: left;
-    max-width: 400px;
-  }
-}
-</style>

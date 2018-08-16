@@ -59,6 +59,13 @@ $logo-font: 'Alegreya SC', 'Times New Roman', Times, serif;
   &__icon {
     align-self: center;
     padding-left: 1rem;
+    color: #FFFFFF;
+  }
+}
+
+.navbar-burger {
+  span {
+    color: white;
   }
 }
 </style>
