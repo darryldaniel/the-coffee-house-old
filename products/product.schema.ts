@@ -1,7 +1,8 @@
 import { makeExecutableSchema } from 'graphql-tools';
 import { dbInstance } from '../storage/DbConnection';
+import { gql } from 'apollo-server-koa';
 
-const typeDefs = `
+const typeDefs = gql`
 type Product {
   _id: String!
   name: String!

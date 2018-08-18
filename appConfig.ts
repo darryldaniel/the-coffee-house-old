@@ -11,6 +11,7 @@ import { setupAuthentication } from './authentication/authenticate';
 const config = require('./webpack.dev.js');
 
 import * as path from 'path';
+import { addGraphQLToApp } from './api/api.router';
 
 export const createAndConfigureApp = async () => {
   const app = new Koa();
@@ -30,6 +31,8 @@ export const createAndConfigureApp = async () => {
   app.use(bodyParser());
   app.use(serve(path.join(__dirname, '/dist')));
   app.use(views(path.join(__dirname, '/dist')));
+
+  addGraphQLToApp(app);
 
   return app;
 };

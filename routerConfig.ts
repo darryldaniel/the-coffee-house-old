@@ -2,8 +2,6 @@ import * as Router from 'koa-router';
 import * as Koa from 'koa';
 import * as passport from 'koa-passport';
 
-import { addApiToRouter } from './api/api.router';
-
 export const createAndConfigureRouter = (app: Koa) => {
   const router = new Router();
 
@@ -25,8 +23,6 @@ export const createAndConfigureRouter = (app: Koa) => {
 
     return authenticateUser(ctx, next);
   });
-
-  addApiToRouter(router);
 
   app.use(router.routes());
 };
